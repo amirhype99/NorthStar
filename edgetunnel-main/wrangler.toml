@@ -14,4 +14,4 @@ compatibility_date = "2024-04-15"
 # Then replace the placeholder below with the returned namespace ID.
 [[kv_namespaces]]
 binding = "ADMIN_KV"
-id = "REPLACE_WITH_KV_NAMESPACE_ID"
+id = "f18db2c100da411bbb8e86a3f7ddd604"
