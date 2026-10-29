@@ -1,4 +1,4 @@
-# EdgeTunnel
+# NorthStar
 
 ## Admin dashboard (English / فارسی)
 
