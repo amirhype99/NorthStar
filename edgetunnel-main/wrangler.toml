@@ -1,0 +1,17 @@
+name = "cf-worker-ws-dev-0415" # todo
+#name = "cf-worker-connect-test" # todo
+#main = "test/worker/cf-cdn-cgi-trace2.js"
+
+#main = "test/worker/worker-connect-test.js"
+main = "src/worker-vless.js"
+
+compatibility_date = "2024-04-15"
+
+[vars]
+# UUID = "example_dev_token"
+
+# Create a namespace with: npx wrangler kv namespace create ADMIN_KV
+# Then replace the placeholder below with the returned namespace ID.
+[[kv_namespaces]]
+binding = "ADMIN_KV"
+id = "REPLACE_WITH_KV_NAMESPACE_ID"
