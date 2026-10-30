@@ -1,4 +1,4 @@
-# NorthStar
+# NorthStar-panel
 
 ## Admin dashboard (English / فارسی)
 
