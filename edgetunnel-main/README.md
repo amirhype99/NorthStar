@@ -1,10 +1,14 @@
-# NorthStar-panel
+# EdgeTunnel
 
 ## Admin dashboard (English / فارسی)
 
-The Worker now serves a bilingual admin dashboard at `/` and `/admin`. The language switcher changes between English and Persian; Persian uses a right-to-left layout. Dashboard authentication and sessions are stored in Cloudflare KV.
+The web control panel is a real standalone HTML file at `public/index.html`. Wrangler uploads it as a Worker Static Asset, and the Worker serves it at `/` and `/admin`. The language switcher changes between English and Persian; Persian uses a right-to-left layout. Dashboard authentication and sessions are stored in Cloudflare KV.
 
-### 1. Create and bind the KV namespace
+### 1. Web control panel files
+
+Edit `public/index.html` to customize the English/Persian login and dashboard interface. It is deployed with the Worker through the `[assets]` configuration in `wrangler.toml`.
+
+### 2. Create and bind the KV namespace
 
 ```bash
 npx wrangler kv namespace create ADMIN_KV
@@ -18,7 +22,7 @@ binding = "ADMIN_KV"
 id = "YOUR_KV_NAMESPACE_ID"
 ```
 
-### 2. Create the admin credentials
+### 3. Create the admin credentials
 
 The password is stored as a PBKDF2-SHA256 hash (not plaintext). Generate one with Node.js:
 
@@ -28,7 +32,7 @@ node scripts/create-admin-hash.mjs admin 'use-a-long-unique-password'
 
 The script prints two Wrangler commands. Run both commands to store `auth:username` and `auth:password` in your KV namespace.
 
-### 3. Deploy
+### 4. Deploy
 
 ```bash
 npx wrangler deploy
@@ -53,3 +57,4 @@ The existing VLESS WebSocket transport and `/<UUID>` configuration endpoint are 
 - `UUID`: optional VLESS UUID override
 - `PROXYIP`: optional proxy IP override
 - `ADMIN_KV`: required KV namespace binding for dashboard login
+- `ASSETS`: static asset binding for `public/index.html` (configured in `wrangler.toml`)
